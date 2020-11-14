@@ -14,17 +14,16 @@ body {
 }
 
 .middle {
-  background-color: black;
-  display: inline-block;
-  background-clip: grey;
   text-align: center;
   position: sticky;
-  left: 90vh;
+
   top: 50vh;
   z-index: 1;
-  background-color: rgb(154 0 0);
 }
-
+.launch-text-container {
+  display: inline-block;
+  background-color: rgb(255, 0, 0);
+}
 .launch-text {
   cursor: pointer;
   font-family: goldman;
@@ -50,6 +49,27 @@ body {
   margin-top: 8px;
   vertical-align: middle;
   width: 100%;
+}
+
+.launch-text-container {
+  -webkit-animation: action 1s infinite alternate;
+  animation: action 1s infinite alternate;
+}
+@-webkit-keyframes action {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+@keyframes action {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
 }
 
 @media screen and (max-width: 800px) {

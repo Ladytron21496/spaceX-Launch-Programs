@@ -1,59 +1,23 @@
 import './App.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import {Test} from "./components/test";
+import LandingPage from "../src/components/landingpage";
 
 function App() {
-  return (
-    <>
-    
-    <div className="overlay">
-    <div className="middle">
-    <h1 className="launch-text">Launch</h1>
-  </div>
-    <div className="row">
-    <div className="column">
-      <img src="/musk1.jpg" style={{width:"100%"}} />
-      <img src="/musk3.jpg" /> 
-      <img src="/musk4.jpg" />
-      <img src="/musk5.jpg" />
-      <img src="/musk8.jpg" />
-      <img src="/musk7.jpg" />
-    </div>
-    <div class="column">
-      <img src="/musk3.jpg" />
-      <img src="/musk5.jpg" /> 
-      <img src="/musk8.jpg" />
-      <img src="/musk7.jpg" />
-      <img src="/musk4.jpg" />
-      <img src="/musk10.jpg" />
-      <img src="/musk12.jpg" />
-    </div>
-    <div class="column">
-      <img src="/musk4.jpg" />
-      <img src="/musk8.jpg" /> 
-      <img src="/musk7.jpg" />
-      <img src="/musk12.jpg" />
-      <img src="/musk1.jpg" />
-      <img src="/musk3.jpg" />
-      <img src="/musk12.jpg" />
-      <img src="/musk9.jpg" />
-    
-    </div>
-    <div class="column">
-      <img src="/musk10.jpg" />
-      <img src="/musk11.jpg" /> 
-      <img src="/musk12.jpg" />
-      <img src="/musk13.jpg" />
-      <img src="/musk9.jpg" />
-      <img src="/musk7.jpg" />
-      <img src="/musk12.jpg" />
-      <img src="/musk11.jpg" />
-      <img src="/musk10.jpg" />
-    </div>
- 
-  </div>
- 
-  </div>
-  </>
-  );
+  return ( <Router>
+    <Switch>
+    <Route exact={true} path="/">
+      <LandingPage />
+    </Route>
+    <Route exact={true} path="/test">
+      <Test/>
+    </Route>
+  </Switch>
+  </Router>)
 }
 
 export default App;
