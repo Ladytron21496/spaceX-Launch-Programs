@@ -1,11 +1,15 @@
-
-
+import React from "react";
+import {useHistory} from "react-router-dom";
  const LandingPage = () =>
 {
+  let history = useHistory();
+  function handleClick() {
+    history.push("/main");
+  }
 return( <div className="overlay">
 <div className="middle">
 <div className="launch-text-container">
-<h1 className="launch-text">Launch</h1>
+<h1 className="launch-text" onClick={handleClick}>Launch</h1>
   </div>
 </div>
 <div className="row">

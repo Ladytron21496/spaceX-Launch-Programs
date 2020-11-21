@@ -4,17 +4,17 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import {Test} from "./components/test";
+import Main from "./components/main";
 import LandingPage from "../src/components/landingpage";
 
 function App() {
   return ( <Router>
     <Switch>
     <Route exact={true} path="/">
-      <LandingPage />
+      <LandingPage/>
     </Route>
-    <Route exact={true} path="/test">
-      <Test/>
+    <Route exact={true} path="/main">
+      <Main/>
     </Route>
   </Switch>
   </Router>)

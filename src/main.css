@@ -1,0 +1,62 @@
+body {
+  background-color: #f2f2f2;
+}
+.main-container {
+  padding: 10px 30px 10px;
+}
+.main-header {
+  font-family: goldman;
+  margin-bottom: 40px;
+}
+.content-container {
+  display: flex;
+}
+.filter-area {
+  height: 695px;
+  background-color: white;
+  width: 280px;
+  border-radius: 8px;
+}
+.filter-section-title {
+  padding-bottom: 5px;
+  margin: 5px 0 25px;
+  width: 75%;
+  font-size: 17px;
+  font-family: goldman;
+  border-bottom: 2px solid #c4bdbb;
+  display: inline-block;
+}
+.filter-section {
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.buttons-container {
+  display: grid;
+  grid-template-columns: minmax(25%, auto) minmax(25%, auto);
+  justify-content: space-between;
+  padding: 0 10px 5px;
+  grid-gap: 15px;
+}
+.button {
+  font-family: "Goldman";
+  font-size: 15px;
+  outline: none;
+  width: 80px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
+  background-color: #c5e09b;
+}
+.button-active {
+  font-family: "Goldman";
+  font-size: 15px;
+  outline: none;
+  width: 80px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
+  background-color: #7cba01;
+}
