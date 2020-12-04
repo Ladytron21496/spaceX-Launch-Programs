@@ -60,3 +60,42 @@ body {
   padding: 5px 10px;
   background-color: #7cba01;
 }
+.shuttle-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+}
+.shuttle-data {
+  padding: 15px;
+  margin-left: 50px;
+  margin-bottom: 50px;
+  text-align: center;
+  background-color: white;
+  height: 450px;
+  width: 250px;
+}
+
+.shuttle-badge {
+  background-color: #f2f2f2;
+  height: 50%;
+}
+
+.shuttle-card-text-main {
+  font-family: "Goldman";
+  color: #376bb0;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.shuttle-card-text {
+  font-family: "Goldman";
+  font-weight: 700;
+  font-size: 15px;
+  color: black;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.shuttle-info {
+  text-align: left;
+  padding: 5px;
+}

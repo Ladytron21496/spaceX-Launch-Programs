@@ -1,5 +1,7 @@
 import React from "react";
 import {buttonYears , buttonLand , buttonLaunch} from "../data/button";
+import {updateFilters} from "../redux/action";
+import { connect } from "react-redux";
 import "../main.css";
 
 class Sidebar extends React.Component
@@ -34,8 +36,10 @@ class Sidebar extends React.Component
 
     handleClick = (e) => 
     {
+        let {dispatchUpdateFilters} = this.props;
+
         this.setState({[e.target.name]:!this.state[e.target.name]}, ()=>{
-            console.log("this is state",this.state)
+            dispatchUpdateFilters(this.state);
         })
     }
 
@@ -86,4 +90,10 @@ class Sidebar extends React.Component
 
 }
 
-export default Sidebar;
+let mapDispatchToProps = (dispatch) => 
+{
+    return {
+        dispatchUpdateFilters: (payload) => dispatch(updateFilters(payload))
+      };
+}
+export default connect(null,mapDispatchToProps)(Sidebar);
