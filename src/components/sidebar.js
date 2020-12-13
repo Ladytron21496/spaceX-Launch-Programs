@@ -1,7 +1,8 @@
 import React from "react";
 import {buttonYears , buttonLand , buttonLaunch} from "../data/button";
-import {updateFilters} from "../redux/action";
+import {updateFilters , setLoading} from "../redux/action";
 import { connect } from "react-redux";
+import axios from "axios";
 import "../main.css";
 
 class Sidebar extends React.Component
@@ -11,7 +12,7 @@ class Sidebar extends React.Component
     {
         super(props);
         this.state = {
-            six:true,
+            six:false,
             seven:false,
             eight:false,
             nine:false,
@@ -34,13 +35,87 @@ class Sidebar extends React.Component
         }
     }
 
+    getSelected = (year) =>
+    {
+       let selectedYear = buttonYears.filter((item)=>{
+           if(item.name===year)
+           {
+               return item;
+           }
+       })
+      
+       return selectedYear[0].value;
+    }
+
     handleClick = (e) => 
     {
-        let {dispatchUpdateFilters} = this.props;
+        let {dispatchUpdateFilters,dispatchLoading} = this.props;
 
-        this.setState({[e.target.name]:!this.state[e.target.name]}, ()=>{
+        this.setState(()=>{
+            if(e.target.name === "suslaunch" || e.target.name === "suslaunchfail")
+            {
+                return {
+                    suslaunch:false,
+                    suslaunchfail:false,
+                    [e.target.name]:!this.state[e.target.name]
+                }
+            } else if(e.target.name === "susland" || e.target.name === "suslandfail")
+            {
+                return {
+                    susland:false,
+                    suslandfail:false,
+                    [e.target.name]:!this.state[e.target.name]
+                }
+            }
+            else
+            {
+                return  { six:false,
+                    seven:false,
+                    eight:false,
+                    nine:false,
+                    ten:false,
+                    eleven:false,
+                    twelve:false,
+                    thirteen:false,
+                    fourteen:false,
+                    fifteen:false,
+                    sixteen:false,
+                    seventeen:false,
+                    eighteen:false,
+                    nineteen:false,
+                    twenty:false,[e.target.name]:!this.state[e.target.name]}
+            }
+        }, ()=>{
             dispatchUpdateFilters(this.state);
-        })
+
+            let yearArray = Object.keys(this.state).slice(0,15);
+            let year = yearArray.find((item)=>{
+                return this.state[item]==true
+            })
+            year = year !==undefined ? this.getSelected(year) : undefined
+            let launch = this.state.suslaunch ? true : this.state.suslaunchfail ? false : "";
+            let land = this.state.susland ? true : this.state.suslandfail ? false : "";
+            if(launch!== "" || land!=="" || year !== undefined)
+            {
+                dispatchLoading(true);
+                axios.get(`https://api.spacexdata.com/v3/launches?limit=50${launch!==""?`&launch_success=${launch}`:""}${land!==""?`&land_success=${land}`:""}${year!==undefined?`&launch_year=${year}`:""}`)
+                .then(res => {
+                    dispatchLoading(false);
+                })
+            }
+            else
+            {
+                dispatchLoading(true);
+                axios.get(`https://api.spacexdata.com/v3/launches?limit=100`)
+                .then(res => {
+                    dispatchLoading(false);
+                })
+            }
+
+            })
+
+
+       
     }
 
     render()
@@ -93,7 +168,9 @@ class Sidebar extends React.Component
 let mapDispatchToProps = (dispatch) => 
 {
     return {
-        dispatchUpdateFilters: (payload) => dispatch(updateFilters(payload))
+        dispatchUpdateFilters: (payload) => dispatch(updateFilters(payload)),
+        dispatchLoading: (payload) => dispatch(setLoading(payload))
+
       };
 }
 export default connect(null,mapDispatchToProps)(Sidebar);

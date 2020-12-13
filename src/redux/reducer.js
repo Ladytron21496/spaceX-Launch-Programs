@@ -1,4 +1,4 @@
-import {UPDATE_FILTERS} from "./action-types";
+import {SET_LOADING, UPDATE_FILTERS} from "./action-types";
 
 
 let initialState = {six:true,
@@ -12,6 +12,7 @@ let initialState = {six:true,
     fourteen:false,
     fifteen:false,
     sixteen:false,
+    loading: false,
     seventeen:false,
     eighteen:false,
     nineteen:false,
@@ -29,6 +30,11 @@ let reducer = (state = initialState, action) => {
             ...state,
             ...action.payload
         }
+    case SET_LOADING:
+      return {
+        ...state,
+        loading: action.payload
+      }
       default:
         return {
           ...state
