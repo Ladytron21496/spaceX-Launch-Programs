@@ -1,6 +1,6 @@
 import React from "react";
 import {buttonYears , buttonLand , buttonLaunch} from "../data/button";
-import {updateFilters , setLoading} from "../redux/action";
+import {updateFilters , setLoading , setShuttleData} from "../redux/action";
 import { connect } from "react-redux";
 import axios from "axios";
 import "../main.css";
@@ -49,7 +49,7 @@ class Sidebar extends React.Component
 
     handleClick = (e) => 
     {
-        let {dispatchUpdateFilters,dispatchLoading} = this.props;
+        let {dispatchUpdateFilters,dispatchLoading,dispatchShuttleData} = this.props;
 
         this.setState(()=>{
             if(e.target.name === "suslaunch" || e.target.name === "suslaunchfail")
@@ -101,6 +101,7 @@ class Sidebar extends React.Component
                 axios.get(`https://api.spacexdata.com/v3/launches?limit=50${launch!==""?`&launch_success=${launch}`:""}${land!==""?`&land_success=${land}`:""}${year!==undefined?`&launch_year=${year}`:""}`)
                 .then(res => {
                     dispatchLoading(false);
+                    dispatchShuttleData(res.data);
                 })
             }
             else
@@ -109,6 +110,7 @@ class Sidebar extends React.Component
                 axios.get(`https://api.spacexdata.com/v3/launches?limit=100`)
                 .then(res => {
                     dispatchLoading(false);
+                    dispatchShuttleData(res.data);
                 })
             }
 
@@ -169,8 +171,8 @@ let mapDispatchToProps = (dispatch) =>
 {
     return {
         dispatchUpdateFilters: (payload) => dispatch(updateFilters(payload)),
-        dispatchLoading: (payload) => dispatch(setLoading(payload))
-
+        dispatchLoading: (payload) => dispatch(setLoading(payload)),
+        dispatchShuttleData: (payload) => dispatch(setShuttleData(payload))
       };
 }
 export default connect(null,mapDispatchToProps)(Sidebar);

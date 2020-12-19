@@ -17,6 +17,16 @@ class Main extends React.Component
         }
     }
 
+  componentDidUpdate(prevstate)
+    {
+
+        let {shuttleData} = this.props;
+        if(prevstate.shuttleData != shuttleData)
+        this.setState({
+            shuttleData
+        })
+
+    }
     componentDidMount()
     {
         let {dispatchLoading} = this.props;
@@ -57,7 +67,8 @@ class Main extends React.Component
 let mapStateToProps = (state) => 
 {
     return {
-        loading : state.loading
+        loading : state.loading,
+        shuttleData: state.shuttleData
     }
 }
 

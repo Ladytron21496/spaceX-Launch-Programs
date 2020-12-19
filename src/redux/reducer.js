@@ -1,4 +1,4 @@
-import {SET_LOADING, UPDATE_FILTERS} from "./action-types";
+import {SET_LOADING, SET_SHUTTLE_DATA, UPDATE_FILTERS} from "./action-types";
 
 
 let initialState = {six:true,
@@ -20,7 +20,8 @@ let initialState = {six:true,
     suslaunch:false,
     suslaunchfail:false,
     susland:false,
-    suslandfail:false}
+    suslandfail:false,
+  shuttleData: []}
 
 
 let reducer = (state = initialState, action) => {
@@ -35,6 +36,11 @@ let reducer = (state = initialState, action) => {
         ...state,
         loading: action.payload
       }
+    case SET_SHUTTLE_DATA: 
+    return {
+      ...state,
+      shuttleData: action.payload
+    }
       default:
         return {
           ...state

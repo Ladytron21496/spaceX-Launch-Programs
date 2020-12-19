@@ -1,5 +1,5 @@
-import {UPDATE_FILTERS} from "./action-types";
-import {SET_LOADING} from "./action-types";
+import {UPDATE_FILTERS , SET_LOADING , SET_SHUTTLE_DATA} from "./action-types";
+
 
 export const updateFilters = (payload) => 
 {
@@ -15,4 +15,14 @@ export const setLoading = (payload) =>
         type: SET_LOADING,
         payload
     }
+}
+
+export const setShuttleData = (payload) => 
+{
+
+    return {
+        type: SET_SHUTTLE_DATA,
+        payload
+    }
+
 }
