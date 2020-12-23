@@ -48,7 +48,7 @@ export const buttonYears = [
         value:2017
     },
     {
-        name:"eightteen",
+        name:"eighteen",
         value:2018
     },
     {
