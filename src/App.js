@@ -1,6 +1,6 @@
 import './App.css';
 import {
-  BrowserRouter as Router,
+  HashRouter,
   Switch,
   Route,
 } from "react-router-dom";
@@ -8,7 +8,7 @@ import Main from "./components/main";
 import LandingPage from "../src/components/landingpage";
 
 function App() {
-  return ( <Router>
+  return ( <HashRouter basename='/'>
     <Switch>
     <Route exact={true} path="/">
       <LandingPage/>
@@ -17,7 +17,7 @@ function App() {
       <Main/>
     </Route>
   </Switch>
-  </Router>)
+  </HashRouter>)
 }
 
 export default App;
