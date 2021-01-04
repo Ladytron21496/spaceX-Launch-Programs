@@ -100,3 +100,25 @@ body {
   text-align: left;
   padding: 5px;
 }
+
+@media only screen and (max-width: 500px) {
+  .content-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .shuttle-container {
+    display: grid;
+    grid-template-columns: auto;
+  }
+
+  .shuttle-data {
+    margin-left: 0px;
+  }
+
+  .filter-area {
+    margin-bottom: 20px;
+  }
+}
