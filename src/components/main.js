@@ -37,6 +37,7 @@ class Main extends React.Component
           this.setState({shuttleData});
           dispatchLoading(false);
         })
+        window.scrollTo(0, 0);
       
     }
     
